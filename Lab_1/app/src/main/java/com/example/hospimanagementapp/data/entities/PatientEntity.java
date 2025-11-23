@@ -15,7 +15,7 @@ public class PatientEntity {
 
     public String name;
 
-    public String dob;
+    public String age;
 
     public String phone;
 

@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button button = findViewById(R.id.buttonPatientReg);
-
+  
         button.setOnClickListener(v -> {
 
             Intent intent = new Intent(MainActivity.this, PatientRegistration.class);

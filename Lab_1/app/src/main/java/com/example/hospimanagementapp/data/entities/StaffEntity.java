@@ -14,10 +14,9 @@ public class StaffEntity {
 
     public String fullName;
 
-    @NonNull
-    public String email;
+    @NonNull public String email;
 
-    @NonNull public String Role role;
+    @NonNull public Role role;
 
     public String adminPin;
 }

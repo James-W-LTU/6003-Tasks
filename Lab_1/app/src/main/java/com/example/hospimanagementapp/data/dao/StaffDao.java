@@ -4,14 +4,16 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.example.hospimanagementapp.data.entities.StaffEntity;
+
 @Dao
 public interface StaffDao {
     @Insert
-    long insert(Staff s);
+    long insert(StaffEntity s);
 
     @Query("SELECT COUNT(*) FROM staff WHERE role = 'ADMIN'")
     int countAdmins();
 
     @Query("SELECT * FROM staff WHERE email = :email")
-    Staff getByEmail(String email);
+    StaffEntity getByEmail(String email);
 }
