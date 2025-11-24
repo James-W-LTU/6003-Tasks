@@ -11,13 +11,15 @@ public class PatientEntity {
     @PrimaryKey(autoGenerate = true) public int id;
 
     @NonNull
-    String nhsNumber;
-
+    public String nhs;
     public String name;
-
     public String age;
-
     public String phone;
 
-    public String email;
+    public PatientEntity(@NonNull String name, String age, String phone, String nhs) {
+        this.name = name;
+        this.age = age;
+        this.phone = phone;
+        this.nhs = nhs;
+    }
 }

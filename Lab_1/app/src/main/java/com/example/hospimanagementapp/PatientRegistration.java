@@ -13,6 +13,7 @@ public class PatientRegistration extends AppCompatActivity {
 
     private EditText FullName;
     private EditText PhoneNumber;
+    private EditText patientAge;
     private EditText NHSNumber;
     private Button buttonSubmit;
 
@@ -24,6 +25,7 @@ public class PatientRegistration extends AppCompatActivity {
 
         FullName = findViewById(R.id.patientFullName);
         PhoneNumber = findViewById(R.id.patientPhoneNumber);
+        patientAge = findViewById(R.id.patientAge);
         NHSNumber = findViewById(R.id.patientNHSNumber);
 
         buttonSubmit = findViewById(R.id.buttonSubmit);
@@ -40,16 +42,31 @@ public class PatientRegistration extends AppCompatActivity {
     private void savePatient() {
             String name = FullName.getText().toString().trim();
             String phone = PhoneNumber.getText().toString().trim();
+            String ageStr = patientAge.getText().toString().trim();
             String nhs = NHSNumber.getText().toString().trim();
 
             if (!validateInput(name, ageStr)) {
                 return;
             }
 
-            int age = Integer.parseInt(ageStr);
+            int ageInt = Integer.parseInt(ageStr);
 
-            PatientEntity newPatient = new PatientEntity(name, age, phone, nhs);
+            PatientEntity newPatient = new PatientEntity(name, phone, nhs, String.valueOf(ageInt));
 
+        }
+
+        private boolean validateInput(String name, String ageStr) {
+            if (name.isEmpty()) {
+                FullName.setError("Full name is required");
+                return false;
+            }
+
+            if (ageStr.isEmpty()) {
+                patientAge.setError("Age is required");
+                return false;
+            }
+
+            return true;
         }
 }
 
