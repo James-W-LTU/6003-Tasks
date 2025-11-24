@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hospimanagementapp.data.database.HospiManagementDatabase;
 import com.example.hospimanagementapp.data.entities.PatientEntity;
 
-public class PatientRegistration extends AppCompatActivity {
+public class PatientRegistrationActivity extends AppCompatActivity {
 
     private EditText FullName;
     private EditText PhoneNumber;
@@ -50,9 +52,18 @@ public class PatientRegistration extends AppCompatActivity {
             }
 
             int ageInt = Integer.parseInt(ageStr);
-
             PatientEntity newPatient = new PatientEntity(name, phone, nhs, String.valueOf(ageInt));
 
+            HospiManagementDatabase database = HospiManagementDatabase.getInstance(this);
+
+            database.getQueryExecutor().execute(() -> {
+                database.patientDao().insert(newPatient);
+
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Patient saved successfully", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
+            });
         }
 
         private boolean validateInput(String name, String ageStr) {

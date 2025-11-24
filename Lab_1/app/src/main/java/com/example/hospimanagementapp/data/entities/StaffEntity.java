@@ -8,15 +8,12 @@ import androidx.room.PrimaryKey;
 
 public class StaffEntity {
 
-    public enum Role {ADMIN, CLINICIAN, RECEPTION }
-
     @PrimaryKey(autoGenerate = true) public long id;
 
+    public enum Role {ADMIN, CLINICIAN, RECEPTION }
+
     public String fullName;
-
     @NonNull public String email;
-
     @NonNull public Role role;
-
     public String adminPin;
 }

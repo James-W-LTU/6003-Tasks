@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PatientRegistration" />
+        <activity android:name=".PatientRegistrationActivity" />
+        <activity android:name=".AdminPortalActivity" />
 
     </application>
 
